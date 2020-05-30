@@ -20,7 +20,7 @@ class StudentAdapter(context: Context, resId: Int, list: List<Student>) : ArrayA
         // 그모양에 어떤값을 적어줄지 결정(실제 데이터 출력 작업)
 
         var tempRow = convertView
-        if(tempRow == null) {
+        if (tempRow == null) {
             tempRow = inf.inflate(R.layout.student_list_item, null)
         }
 
