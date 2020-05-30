@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import dasdsa.sdn.listview_20200530.R
 import dasdsa.sdn.listview_20200530.datas.Student
 
@@ -25,6 +26,24 @@ class StudentAdapter(context: Context, resId: Int, list: List<Student>) : ArrayA
         }
 
         val row = tempRow!!
+
+        // 리턴 해주기 전에 필요 데이터 셋팅 하고 리턴 하도록
+        // 자리에 맞는 데이터 불러오기.
+        val data = mList.get(position) //data 가 한명의 학생이 되는것이다.
+
+        //XML에서 데이터가 뿌려질 뷰를 가져오자.
+        val nameAndAgeTxt = row.findViewById<TextView>(R.id.nameAndAgeTxt)
+        val genderTxt = row.findViewById<TextView>(R.id.genderTxt)
+
+        // 상황에 맞는 데이터 셋팅
+        nameAndAgeTxt.text = data.name
+
+        if (data.isMale) {
+            genderTxt.text = "남성 수강생"
+        }
+        else {
+            genderTxt.text = "여성 수강생"
+        }
 
         return row
     }
