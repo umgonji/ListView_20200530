@@ -31,5 +31,9 @@ class MainActivity : AppCompatActivity() {
         studentAdapter = StudentAdapter(this, R.layout.student_list_item, students)
 
         studentListView.adapter = studentAdapter
+
+    //    studentListView.setOnItemClickListener { parent, view, position, id ->
+
+    //    }
     }
 }
