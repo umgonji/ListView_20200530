@@ -2,9 +2,12 @@ package dasdsa.sdn.listview_20200530
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import dasdsa.sdn.listview_20200530.adapters.StudentAdapter
 import dasdsa.sdn.listview_20200530.datas.Student
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +36,12 @@ class MainActivity : AppCompatActivity() {
         studentListView.adapter = studentAdapter
 
         studentListView.setOnItemClickListener { parent, view, position, id ->
+
+            Log.d("리스트뷰아이템클릭","${position}번 줄 클릭")
+//POSIONT 으로 배열aRRAYList) 에서 학생정보 추출
+            val clickedStudent = students.get(position)
+//빼낸 학생 정보를 이용해서 토스트로 출력
+            Toast.makeText(this, clickedStudent.name, Toast.LENGTH_SHORT).show()
 
         }
     }
