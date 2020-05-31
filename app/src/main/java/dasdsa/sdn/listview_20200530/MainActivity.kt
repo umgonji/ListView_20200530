@@ -50,7 +50,11 @@ class MainActivity : AppCompatActivity() {
 
         studentListView.setOnItemLongClickListener { parent, view, position, id ->
 
-            Toast.makeText(this, "${position}번줄 롱클릭", Toast.LENGTH_SHORT ).show()
+        //    Toast.makeText(this, "${position}번줄 롱클릭", Toast.LENGTH_SHORT ).show()
+
+            students.removeAt(position)
+            studentAdapter.notifyDataSetChanged()
+
             //Long클릭은 boolean값을 리턴해줘야함 (직접 return 쳐줘야 함. 자동으로 안생김.) => 롱클릭 전용 : true, 클릭도 같이 할거다 하면 false 로.
             return@setOnItemLongClickListener true
         }
