@@ -1,10 +1,12 @@
 package dasdsa.sdn.listview_20200530
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import dasdsa.sdn.listview_20200530.adapters.StudentAdapter
 import dasdsa.sdn.listview_20200530.datas.Student
 import kotlinx.android.synthetic.main.activity_main.*
@@ -52,8 +54,15 @@ class MainActivity : AppCompatActivity() {
 
         //    Toast.makeText(this, "${position}번줄 롱클릭", Toast.LENGTH_SHORT ).show()
 
-            students.removeAt(position)
-            studentAdapter.notifyDataSetChanged()
+            val alert = AlertDialog.Builder(this)
+            alert.setTitle("수강생 삭제")
+            alert.setMessage("정말 이 수강생을 삭제하시겠습니까?")
+            alert.setPositiveButton("확인",  DialogInterface.OnClickListener { dialog, which ->
+                students.removeAt(position)
+                studentAdapter.notifyDataSetChanged()
+            })
+            alert.setNegativeButton("취소", null)
+            alert.show()
 
             //Long클릭은 boolean값을 리턴해줘야함 (직접 return 쳐줘야 함. 자동으로 안생김.) => 롱클릭 전용 : true, 클릭도 같이 할거다 하면 false 로.
             return@setOnItemLongClickListener true
